@@ -13,12 +13,17 @@ list = data["drinks"]
 list.each { |entry| Ingredient.create(name: entry["strIngredient1"]) }
 
 DOSES = %w[pinches dashes shots mL]
+browser = Watir::Browser.new
 
 # seed cocktails
-20.times do
-  # create cocktail with random name
+20.times do |i|
+  # create cocktail with random name/pic
+  # get random picture from unsplace and headless browser
+  browser.goto("https://source.unsplash.com/collection/962396/#{i}")
+  # https://source.unsplash.com/{PIC_ID/400x400
+  rand_pic = browser.url
   rand_name = "#{Faker::Movies::HarryPotter.spell} #{Faker::Hipster.word}"
-  this_cocktail = Cocktail.new(name: rand_name)
+  this_cocktail = Cocktail.new(name: rand_name, pic_url: rand_pic)
 
   # add 1-10 random ingredients to this cocktail (non repeating)
   avail_ingredient_ids = Ingredient.ids
@@ -35,3 +40,5 @@ DOSES = %w[pinches dashes shots mL]
     rand_dose.save!
   end
 end
+
+browser.quit

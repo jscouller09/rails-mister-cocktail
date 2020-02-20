@@ -1,6 +1,6 @@
 <div class="card mt-5">
   <div class="card-body">
-    <img src="https://source.unsplash.com/collection/962396/<%= @cocktail.id %>" class="card-img-top" alt="...">
+    <img src="<%= @cocktail.pic_url %>" class="card-img-top" alt="...">
     <div class="d-flex justify-content-between align-items-center">
       <h2 class="card-title pt-3"><%= @cocktail.name %></h2>
       <%= link_to new_cocktail_dose_path(@cocktail) do %>
@@ -14,7 +14,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <p class="card-text m-0"><%= dose.ingredient.name %>&nbsp;=>&nbsp;<%= dose.description %></p>
             <div>
-              <%= link_to dose_path, method: :delete do %>
+              <%= link_to dose_path(dose), method: :delete do %>
                 <i class="fas fa-trash-alt pr-3"></i>
               <% end %>
             </div>

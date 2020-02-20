@@ -1,6 +1,7 @@
 <div class="container mt-3">
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name %>
+    <%= f.input :pic_url, label: "Link to picture", error: "Enter a valid link!" %>
     <%= f.submit "Make cocktail!", class: "btn btn-primary" %>
   <% end %>
 </div>

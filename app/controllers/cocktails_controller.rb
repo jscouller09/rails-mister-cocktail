@@ -21,7 +21,7 @@ class CocktailsController < ApplicationController
   private
 
   def safe_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :pic_url)
   end
 
   def grab_cocktail
