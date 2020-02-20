@@ -1,4 +1,6 @@
 class CocktailsController < ApplicationController
+  before_action :grab_cocktail, only: %i[show]
+
   def new
   end
 
@@ -10,6 +12,15 @@ class CocktailsController < ApplicationController
   end
 
   def show
+  end
+
+  private
+
+  def safe_params
+
+  end
+
+  def grab_cocktail
     @cocktail = Cocktail.find(params[:id])
   end
 end

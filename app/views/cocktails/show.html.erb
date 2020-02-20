@@ -1,0 +1,18 @@
+
+<div class="card mt-5">
+  <div class="card-body">
+    <img src="https://source.unsplash.com/collection/962396/<%= @cocktail.id %>" class="card-img-top" alt="...">
+    <h2 class="card-title pt-3"><%= @cocktail.name %></h2>
+    <ul class="list-group">
+      <% @cocktail.doses.each do |dose| %>
+        <li class="list-group-item">
+          <p class="card-text">
+            <%= dose.ingredient.name %>
+            &nbsp;-&nbsp;
+            <%= dose.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
