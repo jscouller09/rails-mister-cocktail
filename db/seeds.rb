@@ -17,7 +17,7 @@ DOSES = %w[pinches dashes shots mL]
 # seed cocktails
 20.times do
   # create cocktail with random name
-  rand_name = "#{Faker::FunnyName.name.downcase} #{Faker::Hipster.word}"
+  rand_name = "#{Faker::Movies::HarryPotter.spell} #{Faker::Hipster.word}"
   this_cocktail = Cocktail.new(name: rand_name)
 
   # add 1-10 random ingredients to this cocktail (non repeating)

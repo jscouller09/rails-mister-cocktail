@@ -1,0 +1,24 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "logo.png", width: 300 %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Make a cocktail!", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "See your favourites", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= image_tag "https://source.unsplash.com/collection/526820/100x100", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      </li>
+    </ul>
+  </div>
+</div>
