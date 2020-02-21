@@ -1,4 +1,4 @@
-<div class="cards mt-3">
+<div class="cards my-5">
   <% @cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail) do %>
       <% if cocktail.photo.attached? %>
