@@ -12,10 +12,10 @@
         <i class="fas fa-plus pr-3"></i>
         &nbsp;Add ingredient
       </button>
-      <%= link_to new_cocktail_dose_path(@cocktail), class: "btn btn-primary" do %>
+<!--       <%= link_to new_cocktail_dose_path(@cocktail), class: "btn btn-primary" do %>
         <i class="fas fa-plus pr-3"></i>
         &nbsp;Add ingredient (form)
-      <% end %>
+      <% end %> -->
     </div>
 
     <%= simple_form_for [@cocktail, @dose], hidden: true do |f| %>
@@ -23,6 +23,8 @@
       <%= f.input :description, label: "How much?" %>
       <%= f.submit "Throw it in the mix!", class: "btn btn-primary" %>
     <% end %>
+
+    <hr>
 
     <ul class="list-group">
       <% @cocktail.doses.each do |dose| %>
