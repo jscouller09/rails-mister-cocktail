@@ -12,7 +12,7 @@ data = JSON.parse(open(url).read)
 list = data["drinks"]
 list.each { |entry| Ingredient.create(name: entry["strIngredient1"]) }
 
-DOSES = %w[pinches dashes shots mL]
+DOSES = %w[pinches dashes shots mL fingers]
 browser = Watir::Browser.new
 
 # seed cocktails

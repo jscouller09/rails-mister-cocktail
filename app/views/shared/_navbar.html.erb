@@ -1,7 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png", width: 300 %>
-  <% end %>
+    <%= link_to root_path do %>
+      <div class="d-flex justify-content-left">
+        <%= image_tag "logo_orange.png", width: 200, class: "mr-3" %>
+      </div>
+    <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,7 +13,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Make a cocktail!", new_cocktail_path, class: "nav-link" %>
+        <%= link_to "Make your own!", new_cocktail_path, class: "nav-link pr-3" %>
       </li>
       <li class="nav-item">
         <%= image_tag "https://source.unsplash.com/collection/526820/100x100", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
