@@ -1,6 +1,10 @@
 <div class="card mt-5">
   <div class="card-body">
-    <img src="<%= @cocktail.pic_url %>" class="card-img-top" alt="...">
+    <% if @cocktail.photo.attached? %>
+      <%= cl_image_tag @cocktail.photo.key, height: 400, width: 400, crop: :fit, class: "card-img-top", alt:"picture of #{@cocktail.name} cocktail" %>
+    <% else %>
+      <img src="<%= @cocktail.pic_url %>" class="card-img-top" alt="picture of <%= @cocktail.name %> cocktail">
+    <% end %>
     <div class="d-flex justify-content-between align-items-center">
       <h2 class="card-title pt-3"><%= @cocktail.name %></h2>
       <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal"> -->

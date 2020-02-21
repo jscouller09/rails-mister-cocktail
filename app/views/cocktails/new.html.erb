@@ -2,6 +2,16 @@
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name %>
     <%= f.input :pic_url, label: "Link to picture", error: "Enter a valid link!" %>
-    <%= f.submit "Make cocktail!", class: "btn btn-primary" %>
+    <label class="btn btn-primary d-block">
+      Add a photo from your computer instead...
+      <span class="d-none">
+        <%= f.input :photo,
+            as: :file,
+            label: "Upload a photo",
+            input_html: { accept: "image/*" },
+            class: "custom-file" %>
+      </span>
+    </label>
+    <%= f.submit "Make cocktail!", class: "btn btn-primary mt-5" %>
   <% end %>
 </div>
