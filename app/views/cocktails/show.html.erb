@@ -3,20 +3,35 @@
     <img src="<%= @cocktail.pic_url %>" class="card-img-top" alt="...">
     <div class="d-flex justify-content-between align-items-center">
       <h2 class="card-title pt-3"><%= @cocktail.name %></h2>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal">
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal"> -->
+      <button type="button" class="btn btn-primary" id="toggle-ingredient-button">
         <i class="fas fa-plus pr-3"></i>
-        &nbsp;Add (modal)
+        &nbsp;Add ingredient
       </button>
       <%= link_to new_cocktail_dose_path(@cocktail), class: "btn btn-primary" do %>
         <i class="fas fa-plus pr-3"></i>
-        &nbsp;Add an ingredient (form)
+        &nbsp;Add ingredient (form)
       <% end %>
     </div>
+
+    <%= simple_form_for [@cocktail, @dose], hidden: true do |f| %>
+      <%= f.association :ingredient %>
+      <%= f.input :description, label: "How much?" %>
+      <%= f.submit "Throw it in the mix!", class: "btn btn-primary" %>
+    <% end %>
+
     <ul class="list-group">
       <% @cocktail.doses.each do |dose| %>
-        <li class="list-group-item">
+        <li class="list-group-item border-0">
           <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text m-0"><%= dose.ingredient.name %>&nbsp;=>&nbsp;<%= dose.description %></p>
+            <div class="d-flex">
+              <div class="text-right ingredient pr-3">
+                <p class="m-0"><%= dose.ingredient.name %></p>
+              </div>
+              <div class="text-left border-left pl-3">
+                <p class="m-0"><%= dose.description %></p>
+              </div>
+            </div>
             <div>
               <%= link_to dose_path(dose), method: :delete do %>
                 <i class="fas fa-trash-alt pr-3"></i>
@@ -31,7 +46,9 @@
 
 
 
-<!-- Modal to add ingredients-->
+
+
+<!-- Modal to add ingredients
 <%= simple_form_for [@cocktail, @dose], remote: true do |f| %>
   <div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -54,3 +71,4 @@
     </div>
   </div>
 <% end %>
+-->
