@@ -3,9 +3,13 @@
     <img src="<%= @cocktail.pic_url %>" class="card-img-top" alt="...">
     <div class="d-flex justify-content-between align-items-center">
       <h2 class="card-title pt-3"><%= @cocktail.name %></h2>
-      <%= link_to new_cocktail_dose_path(@cocktail) do %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal">
         <i class="fas fa-plus pr-3"></i>
-        &nbsp;Add an ingredient
+        &nbsp;Add (modal)
+      </button>
+      <%= link_to new_cocktail_dose_path(@cocktail), class: "btn btn-primary" do %>
+        <i class="fas fa-plus pr-3"></i>
+        &nbsp;Add an ingredient (form)
       <% end %>
     </div>
     <ul class="list-group">
@@ -24,3 +28,29 @@
     </ul>
   </div>
 </div>
+
+
+
+<!-- Modal to add ingredients-->
+<%= simple_form_for [@cocktail, @dose], remote: true do |f| %>
+  <div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Add an ingredient</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <%= f.association :ingredient %>
+            <%= f.input :description, label: "How much?" %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <%= f.submit "Throw it in the mix!", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
